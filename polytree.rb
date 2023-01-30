@@ -8,11 +8,12 @@ class PolyTreeNode
     end
 
     def parent=(new_parent)
-        
+        # Take off parent for self if self has a parent
         if @parent != nil
             @parent.children.select! { |child| child != self }
         end
 
+        # Assign new parent to self & add self to parent's children array
         @parent = new_parent
         if new_parent != nil
             unless parent.children.include?(self)
